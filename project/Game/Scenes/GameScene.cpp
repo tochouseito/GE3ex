@@ -73,16 +73,16 @@ void GameScene::Initialize() {
 	if (!serial->InitializeSerialPort("COM3")) {  // L"\\\\.\\COM3" はワイド文字列リテラルです
 		return;
 	}
-
 }
 
 void GameScene::Update() {
 	if (Input::GetInstance()->TriggerKey(DIK_0)) {
 		OutputDebugStringA("OK");
 	}
-	
+#ifdef _DEBUG
 	ImGui::Begin("serialValue");
 	if (ImGui::Button("Get")) {
+#endif // _DEBUG
 	 std::string data = serial->ReadSerialPort();
 		if (!data.empty()) {
 			std::cout << "Received: " << data << std::endl;
@@ -95,10 +95,12 @@ void GameScene::Update() {
 				gsrValue = std::stoi(data.substr(posGSR + 5));
 			}
 		}
+#ifdef _DEBUG
 	}
 	ImGui::Text("gsrValue:%d", gsrValue);
 	ImGui::Text("hrValue:%d", heartRate);
 	ImGui::End();
+#endif // _DEBUG
 	plane_->Update();
 	axis_->Update();
 	sphere_->Update();
