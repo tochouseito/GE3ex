@@ -60,10 +60,10 @@ void GameScene::Initialize() {
 	
 	// メインカメラの生成
 	mainCamera_ = new MainCamera();
-	mainCamera_->Initialize(Vector3(0.0f, 0.0f, 30.0f), &viewProjection_);
+	mainCamera_->Initialize(Vector3(0.0f, 0.0f, -10.0f), &viewProjection_);
 	// スプライトの生成
 	sprite_ = new Sprite();
-	sprite_->Initialize(Vector3(0.0f, 0.0f, 0.0f), &viewProjection_,textureHandle_[1]);
+	sprite_->Initialize(Vector3(0.0f, 0.0f, 0.0f), &viewProjection_,textureHandle_[0]);
 
 	primitive_ = new Primitive();
 	primitive_->Initialize(textureHandle_[0],&viewProjection_);
