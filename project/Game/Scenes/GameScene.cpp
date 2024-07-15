@@ -109,7 +109,7 @@ void GameScene::Update() {
 	particles_->Update();
 	// メインカメラの処理
 	mainCamera_->Update();
-	viewProjection_.TransferMatrix();
+	viewProjection_.UpdateMatrix();
 }
 
 void GameScene::Draw() {

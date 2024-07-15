@@ -4,6 +4,7 @@
 #include"Matrix4x4.h"
 #include<d3d12.h>
 #include<wrl.h>
+#include<numbers>
 // 定数バッファ用データ構造体
 struct ConstBufferDataViewProjection {
 	Matrix4x4 View;
@@ -16,9 +17,9 @@ public:
 	ViewProjection() = default;
 	~ViewProjection() = default;
 	// X,Y,Z軸回りのローカル回転角
-	Vector3 rotation_ = { 0, 0, 0 };
+	Vector3 rotation_ = { 0.0f, 0.0f, 0.0f };
 	// ローカル座標
-	Vector3 translation_ = { 0, 0, -50 };
+	Vector3 translation_ = { 0.0f, 0.0f, -50.0f };
 	
 	struct wvpData {
 		Matrix4x4 WVP_;
@@ -26,14 +27,21 @@ public:
 	};
 	
 	Matrix4x4 matWorld;
-	Matrix4x4 cameraMatrix;
+	Matrix4x4 cameraMatrix_;
 
 	uint32_t kNumInstance_ = 0;// インスタンス数
 	const uint32_t kNumMaxInstance_ = 10;// インスタンス数
 	Matrix4x4 worldViewProjectionMatrix_ = { 0 };
 	Matrix4x4 viewMatrix_ = { 0 };
 	Matrix4x4 projectionMatrix_ = { 0 };
-	Vector3 cameraPosition_ = { 0.0f };
+	// 垂直方向視野角
+	float fovAngleY = 45.0f * std::numbers::pi_v<float> / 180.0f;
+	// ビューポートのアスペクト比
+	float aspectRatio = (float)16 / 9;
+	// 深度限界（手前側）
+	float nearZ = 0.1f;
+	// 深度限界（奥側）
+	float farZ = 1000.0f;
 	/// <summary>
 	/// 初期化
 	/// </summary>
@@ -49,7 +57,6 @@ public:
 
 	void UpdateMatrix();
 
-	void UpdateMatrixtest();
 
 	ID3D12Resource* GetWvpResource() { return wvpResource_.Get(); }
 

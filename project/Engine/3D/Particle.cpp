@@ -108,7 +108,7 @@ void Particle::Update() {
 			}
 		}
 		Matrix4x4 backToFrontMatrix = MakeRotateYMatrix(std::numbers::pi_v<float>);
-		Matrix4x4 billboardMatrix = Multiply(backToFrontMatrix, viewProjection_->cameraMatrix);
+		Matrix4x4 billboardMatrix = Multiply(backToFrontMatrix, viewProjection_->cameraMatrix_);
 		billboardMatrix.m[3][0] = 0.0f;
 		billboardMatrix.m[3][1] = 0.0f;
 		billboardMatrix.m[3][2] = 0.0f;
