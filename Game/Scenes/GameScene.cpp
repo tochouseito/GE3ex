@@ -50,7 +50,7 @@ void GameScene::Initialize() {
 	axis_->Initialize(axisModel_, textureHandle_[0], &viewProjection_);
 
 	/*3D球モデル*/
-	sphereModel_ = Model::CreateSphere();
+	sphereModel_ = Model::CreateSphere(32);
 	sphere_ = new SphereModel();
 	sphere_->Initialize(sphereModel_, textureHandle_[2], &viewProjection_);
 
@@ -60,7 +60,7 @@ void GameScene::Initialize() {
 	
 	// メインカメラの生成
 	mainCamera_ = new MainCamera();
-	mainCamera_->Initialize(Vector3(0.0f, 0.0f, -10.0f), &viewProjection_);
+	mainCamera_->Initialize(Vector3(0.0f, 0.0f, 30.0f), &viewProjection_);
 	// スプライトの生成
 	sprite_ = new Sprite();
 	sprite_->Initialize(Vector3(0.0f, 0.0f, 0.0f), &viewProjection_,textureHandle_[0]);
@@ -99,9 +99,9 @@ void GameScene::Update() {
 	ImGui::Text("gsrValue:%d", gsrValue);
 	ImGui::Text("hrValue:%d", heartRate);
 	ImGui::End();
-	//plane_->Update();
+	plane_->Update();
 	axis_->Update();
-	//sphere_->Update();
+	sphere_->Update();
 	//primitive_->Update();
 	sprite_->Update();
 	//particles_->Update();
@@ -111,9 +111,9 @@ void GameScene::Update() {
 }
 
 void GameScene::Draw() {
-	//plane_->Draw();
+	plane_->Draw();
 	axis_->Draw();
-	//sphere_->Draw();
+	sphere_->Draw();
 	//primitive_->Draw();
 	//particles_->Draw();
 	sprite_->Draw();
