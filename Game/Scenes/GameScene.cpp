@@ -104,7 +104,7 @@ void GameScene::Update() {
 	sphere_->Update();
 	//primitive_->Update();
 	sprite_->Update();
-	//particles_->Update();
+	particles_->Update();
 	// メインカメラの処理
 	mainCamera_->Update();
 	viewProjection_.TransferMatrix();
@@ -115,6 +115,6 @@ void GameScene::Draw() {
 	axis_->Draw();
 	sphere_->Draw();
 	//primitive_->Draw();
-	//particles_->Draw();
+	particles_->Draw();
 	sprite_->Draw();
 }
