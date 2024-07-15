@@ -208,3 +208,42 @@ void Mesh::CreateObjectVertex(Object Object) {
 		break;
 	}
 }
+
+void Mesh::CreateSpriteVertexResource(size_t vertices) {
+	vertexResource_ = DirectXCommon::GetInstance()->CreateBufferResource(DirectXCommon::GetInstance()->GetDevice(), sizeof(VertexData) * vertices);
+
+	// 頂点バッファビューを作成する
+	// リソースの先頭のアドレスから使う
+	vertexBufferView_.BufferLocation = vertexResource_->GetGPUVirtualAddress();
+	// 使用するリソースのサイズは頂点のサイズ
+	vertexBufferView_.SizeInBytes = sizeof(VertexData) * static_cast<UINT>(vertices);
+	// 1頂点アタリのサイズ
+	vertexBufferView_.StrideInBytes = sizeof(VertexData);
+
+	// 頂点リソースにデータを書き込む
+	// 書き込むためのアドレスを取得
+	vertexResource_->Map(0, nullptr, reinterpret_cast<void**>(&vertexData_));
+
+	// １枚目の三角形
+	vertexData_[0].position = { 0.0f,360.0f,0.0f,1.0f };// 左下
+	vertexData_[0].texcoord = { 0.0f,1.0f };
+	vertexData_[0].normal = { 0.0f,0.0f,-1.0f };
+	vertexData_[1].position = { 0.0f,0.0f,0.0f,1.0f };// 左上
+	vertexData_[1].texcoord = { 0.0f,0.0f };
+	vertexData_[1].normal = { 0.0f,0.0f,-1.0f };
+	vertexData_[2].position = { 640.0f,360.0f,0.0f,1.0f };// 右下
+	vertexData_[2].texcoord = { 1.0f,1.0f };
+	vertexData_[2].normal = { 0.0f,0.0f,-1.0f };
+	vertexData_[3].position = { 640.0f,0.0f,0.0f,1.0f };// 左上
+	vertexData_[3].texcoord = { 1.0f,0.0f };
+	vertexData_[3].normal = { 0.0f,0.0f,-1.0f };
+	vertexData_[3].position = { 0.0f,0.0f,0.0f,1.0f };// 左下
+	vertexData_[3].texcoord = { 0.0f,0.0f };
+	vertexData_[3].normal = { 0.0f,0.0f,-1.0f };
+	vertexData_[4].position = { 640.0f,0.0f,0.0f,1.0f };// 左上
+	vertexData_[4].texcoord = { 1.0f,0.0f };
+	vertexData_[4].normal = { 0.0f,0.0f,-1.0f };
+	vertexData_[5].position = { 640.0f,360.0f,0.0f,1.0f };// 右下
+	vertexData_[5].texcoord = { 1.0f,1.0f };
+	vertexData_[5].normal = { 0.0f,0.0f,-1.0f };
+}

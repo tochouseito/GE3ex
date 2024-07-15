@@ -80,7 +80,6 @@ private: // メンバ変数
 	Primitive* primitive_ = nullptr;
 
 	/*シリアルライブラリ*/
-	//serialib serial;
 	SerialToArduino* serial=nullptr;
 	int heartRate = 0;
 	int gsrValue = 0;

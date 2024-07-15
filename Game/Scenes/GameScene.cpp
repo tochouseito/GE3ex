@@ -63,16 +63,13 @@ void GameScene::Initialize() {
 	mainCamera_->Initialize(Vector3(0.0f, 0.0f, 30.0f), &viewProjection_);
 	// スプライトの生成
 	sprite_ = new Sprite();
-	//sprite_->Initialize(Vector3(0.0f, 0.0f, 0.0f), &viewProjection_,textureHandle_[1]);
+	sprite_->Initialize(Vector3(0.0f, 0.0f, 0.0f), &viewProjection_,textureHandle_[1]);
 
 	primitive_ = new Primitive();
 	primitive_->Initialize(textureHandle_[0],&viewProjection_);
 
 	serial = new SerialToArduino();
-	/*if (serial.openDevice(COM_PORT, 9600) != 1) {
-		std::cerr << "Failed to open port" << std::endl;
-		return ;
-	}*/
+	
 	if (!serial->InitializeSerialPort("COM3")) {  // L"\\\\.\\COM3" はワイド文字列リテラルです
 		return;
 	}
@@ -80,7 +77,6 @@ void GameScene::Initialize() {
 }
 
 void GameScene::Update() {
-	//uint32_t gsrValue = GetGSRValue(serial);
 	if (Input::GetInstance()->TriggerKey(DIK_0)) {
 		OutputDebugStringA("OK");
 	}
@@ -107,7 +103,7 @@ void GameScene::Update() {
 	axis_->Update();
 	//sphere_->Update();
 	//primitive_->Update();
-	//sprite_->Update();
+	sprite_->Update();
 	//particles_->Update();
 	// メインカメラの処理
 	mainCamera_->Update();
@@ -120,5 +116,5 @@ void GameScene::Draw() {
 	//sphere_->Draw();
 	//primitive_->Draw();
 	//particles_->Draw();
-	//sprite_->Draw();
+	sprite_->Draw();
 }

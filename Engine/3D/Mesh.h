@@ -39,6 +39,10 @@ public: // メンバ関数
 
 	void CreateGSVertexResource(size_t vertices);
 
+	void CreateSpriteVertexResource(size_t vertices);
+
+	void CreateSpriteIndexResource();
+
 	D3D12_VERTEX_BUFFER_VIEW* GetVertexBufferView() { return &vertexBufferView_; }
 
 	D3D12_INDEX_BUFFER_VIEW* GetIndexBufferView() { return &indexBufferViewSphere_; }

@@ -35,10 +35,12 @@ public:
 	static ID3D12PipelineState* GetPipelineState(uint32_t BlendMode) { return GetInstance()->graphicsPipelineState_[BlendMode].Get(); }
 	static ID3D12PipelineState* GetParticlePipelineState(uint32_t BlendMode) { return GetInstance()->graphicsPipelineStateParticle_[BlendMode].Get(); }
 	static ID3D12PipelineState* GetPipelineStateGSO(uint32_t BlendMode) { return GetInstance()->graphicsPipelineStateGSO_[BlendMode].Get(); }
+	static ID3D12PipelineState* GetPipelineStateSprite(uint32_t BlendMode) { return GetInstance()->graphicsPipelineStateSprite_[BlendMode].Get(); }
 
 	static ID3D12RootSignature* GetRootSignature() { return GetInstance()->rootSignature_.Get(); }
 	static ID3D12RootSignature* GetRootSignatureParticle() { return GetInstance()->rootSignatureParticle_.Get(); }
 	static ID3D12RootSignature* GetRootSignatureGSO() { return GetInstance()->rootSignatureGSO_.Get(); }
+	static ID3D12RootSignature* GetRootSignatureSprite() { return GetInstance()->rootSignatureSprite_.Get(); }
 
 	/// <summary>
 	/// グラフィックスパイプラインの作成
@@ -54,6 +56,11 @@ public:
 	/// グラフィックスパイプラインの作成
 	/// </summary>
 	void CreateGraphicsPipelineGSO(ID3D12Device* device);
+
+	/// <summary>
+	/// グラフィックスパイプラインの作成
+	/// </summary>
+	void CreateGraphicsPipelineSprite(ID3D12Device* device);
 
 	/// <summary>
 	/// dxcCompilerを初期化
@@ -82,6 +89,7 @@ private:
 	Microsoft::WRL::ComPtr < ID3D12PipelineState> graphicsPipelineState_[kCountOfBlendMode];
 	Microsoft::WRL::ComPtr < ID3D12PipelineState> graphicsPipelineStateParticle_[kCountOfBlendMode];
 	Microsoft::WRL::ComPtr < ID3D12PipelineState> graphicsPipelineStateGSO_[kCountOfBlendMode];
+	Microsoft::WRL::ComPtr < ID3D12PipelineState> graphicsPipelineStateSprite_[kCountOfBlendMode];
 	//ID3D12PipelineState* graphicsPipelineState_;
 	Microsoft::WRL::ComPtr < IDxcUtils> dxcUtils_;
 	Microsoft::WRL::ComPtr < IDxcCompiler3> dxcCompiler_;
@@ -89,5 +97,6 @@ private:
 	Microsoft::WRL::ComPtr < ID3D12RootSignature> rootSignature_;
 	Microsoft::WRL::ComPtr < ID3D12RootSignature>rootSignatureParticle_;
 	Microsoft::WRL::ComPtr < ID3D12RootSignature> rootSignatureGSO_;
+	Microsoft::WRL::ComPtr < ID3D12RootSignature> rootSignatureSprite_;
 };
 

@@ -254,6 +254,8 @@
     <FxCompile Include="Resources\Shader\Primitive.VS.hlsl" />
     <FxCompile Include="Resources\Shader\Primitive.PS.hlsl" />
     <FxCompile Include="Resources\Shader\BasicGeometryShader.hlsl" />
+    <FxCompile Include="Resources\Shader\Sprite.VS.hlsl" />
+    <FxCompile Include="Resources\Shader\Sprite.PS.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="externals\imgui\LICENSE.txt" />
@@ -262,5 +264,6 @@
     <None Include="Resources\Shader\obj3d.hlsli" />
     <None Include="Resources\Shader\Particle.hlsli" />
     <None Include="Resources\Shader\Primitive.hlsli" />
+    <None Include="Resources\Shader\Sprite.hlsli" />
   </ItemGroup>
 </Project>
