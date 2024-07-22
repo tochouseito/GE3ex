@@ -31,6 +31,15 @@ public:
 		Vector3 acceleration;//!<加速度
 		AABB area;//!<範囲
 	};
+	struct ParticleGroup {
+		WorldTransform worldTransform;
+		Vector3 velocity;
+		ObjectColor color;
+		float lifeTime;
+		float currentTime;
+		Emitter emitter;
+		AccelerationField accelerationField;
+	};
 	/// <summary>
 	/// 初期化
 	/// </summary>

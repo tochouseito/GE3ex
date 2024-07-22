@@ -137,6 +137,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Game\Objects\SphereModel.cpp" />
     <ClCompile Include="Engine\3D\Primitive.cpp" />
     <ClCompile Include="Engine\base\SerialToArduino.cpp" />
+    <ClCompile Include="Engine\3D\ParticleManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Objects\axis.h" />
@@ -180,6 +181,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Game\Objects\SphereModel.h" />
     <ClInclude Include="Engine\3D\Primitive.h" />
     <ClInclude Include="Engine\base\SerialToArduino.h" />
+    <ClInclude Include="Engine\3D\ParticleManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\BasicGeometryShader.hlsl">

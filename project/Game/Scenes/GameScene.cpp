@@ -71,8 +71,13 @@ void GameScene::Initialize() {
 	serial = new SerialToArduino();
 	
 	if (!serial->InitializeSerialPort("COM3")) {  // L"\\\\.\\COM3" はワイド文字列リテラルです
-		return;
+		Vector3();
 	}
+	/*パーティクルマネージャの生成*/
+	particleManager_ = std::make_unique<ParticleManager>();
+	particleManager_->Initialize(&viewProjection_);
+	particleManager_->AddParticle("circle", textureHandle_[2]);
+	particleManager_->AddParticle("uvChecker", textureHandle_[0]);
 }
 
 void GameScene::Update() {
@@ -107,6 +112,8 @@ void GameScene::Update() {
 	//primitive_->Update();
 	sprite_->Update();
 	particles_->Update();
+	/*パーティクルマネージャの更新*/
+	particleManager_->Update();
 	// メインカメラの処理
 	mainCamera_->Update();
 	viewProjection_.UpdateMatrix();
@@ -118,5 +125,7 @@ void GameScene::Draw() {
 	sphere_->Draw();
 	//primitive_->Draw();
 	particles_->Draw();
+	/*パーティクルマネージャの描画*/
+	particleManager_->Draw();
 	sprite_->Draw();
 }

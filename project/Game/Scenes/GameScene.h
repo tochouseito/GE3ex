@@ -8,6 +8,7 @@
 #include"MainCamera.h"
 #include"ViewProjection.h"
 #include"Particle.h"
+#include"ParticleManager.h"
 
 // 2D
 #include"Sprite.h"
@@ -83,6 +84,8 @@ private: // メンバ変数
 	SerialToArduino* serial=nullptr;
 	int heartRate = 0;
 	int gsrValue = 0;
+	/*パーティクルマネージャ*/
+	std::unique_ptr<ParticleManager> particleManager_;
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>
