@@ -76,7 +76,7 @@ void GameScene::Initialize() {
 	/*パーティクルマネージャの生成*/
 	particleManager_ = std::make_unique<ParticleManager>();
 	particleManager_->Initialize(&viewProjection_);
-	particleManager_->AddParticle("circle", textureHandle_[2]);
+	particleManager_->AddParticle("circle", textureHandle_[1]);
 	particleManager_->AddParticle("uvChecker", textureHandle_[0]);
 }
 

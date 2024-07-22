@@ -1,8 +1,10 @@
 #include "ParticleManager.h"
 #include"GraphicsPipelineState.h"
 #include"DirectXCommon.h"
+#include"TextureManager.h"
 #include"Mymath.h"
 #include"imgui.h"
+
 std::random_device seedGenerator;
 std::mt19937 randomEngine(seedGenerator());
 ParticleManager::ParticleManager()
@@ -29,12 +31,11 @@ void ParticleManager::Update()
 	ImGui::Begin("Particles");
 	for (auto& particle : particleGroups) {
 		if (ImGui::CollapsingHeader(particle.first.c_str())) {
-			if (ImGui::Button("Generate")) {
+			if (ImGui::Button(("Generate"+ particle.first).c_str())) {
 				particle.second.particles.splice(particle.second.particles.end(), Emit(particle.second.emitter, randomEngine));
 			}
 		}
 	}
-	
 	ImGui::End();
 #endif
 	for (auto& particle : particleGroups) {
@@ -93,7 +94,26 @@ void ParticleManager::Update()
 void ParticleManager::Draw()
 {
 	for (auto& particle : particleGroups) {
-
+		// コマンドリストの取得
+		ID3D12GraphicsCommandList* commandList = DirectXCommon::GetInstance()->GetCommandList();
+		// 形状を設定。PSOに設定しているものとはまた別。同じものを設定すると考えておけばいい
+		commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		// Roosignatureを設定。PSOに設定しているけど別途設定が必要
+		commandList->SetGraphicsRootSignature(GraphicsPipelineState::GetRootSignatureParticle());
+		commandList->SetPipelineState(GraphicsPipelineState::GetParticlePipelineState(particle.second.current_blend));// PSOを設定
+		commandList->IASetVertexBuffers(0, 1,particle.second.mesh->GetVertexBufferView());// VBVを設定
+		// マテリアルCBufferの場所を設定
+		commandList->SetGraphicsRootConstantBufferView(0, particle.second.material->GetMaterialResource()->GetGPUVirtualAddress());
+		// wvp用のCBufferの場所を設定
+		commandList->SetGraphicsRootConstantBufferView(4, viewProjection_->GetWvpResource()->GetGPUVirtualAddress());
+		// ライト用のCBufferの場所を設定
+		commandList->SetGraphicsRootConstantBufferView(3, particle.second.directionalLight->GetLightResource()->GetGPUVirtualAddress());
+		commandList->SetGraphicsRootDescriptorTable(2, TextureManager::GetInstance()->GetTextureHandle(particle.second.textureHandle));
+		// instancing用のDataを読むためにStructuredBufferのSRVを設定する
+		commandList->SetGraphicsRootDescriptorTable(1, particle.second.worldTransform.GetSrvHandleGPU());
+		commandList->SetGraphicsRootDescriptorTable(5, particle.second.objectColor.GetSrvHandleGPU());
+		// 描画！(DrawCall/ドローコール)。３頂点で1つのインスタンス。インスタンスについては今後
+		commandList->DrawInstanced(static_cast<UINT> (6), particle.second.numInstance, 0, 0);
 	}
 }
 

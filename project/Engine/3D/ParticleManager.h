@@ -31,7 +31,7 @@ public:/*パーティクルの要素構造体*/
 	};
 	struct ParticleGroup {
 		std::list<Particle> particles;
-		Emitter emitter;
+		//Emitter emitter;
 		AccelerationField accelerationField;
 		WorldTransform worldTransform;
 		ObjectColor objectColor;
@@ -42,8 +42,8 @@ public:/*パーティクルの要素構造体*/
 		bool useField = false;
 		/*グラフィックパイプラインに合わせるため*/
 		std::unique_ptr<Material> material;
-		std::unique_ptr < Mesh> mesh;
-		std::unique_ptr < DirectionalLight> directionalLight;
+		std::unique_ptr<Mesh> mesh;
+		std::unique_ptr<DirectionalLight> directionalLight;
 	};
 public:
 	/// <summary>
