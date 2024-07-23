@@ -11,5 +11,5 @@ EmitterManager::~EmitterManager()
 
 void EmitterManager::Emit()
 {
-	ParticleManager::Emit()
+	
 }

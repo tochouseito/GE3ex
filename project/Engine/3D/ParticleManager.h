@@ -31,7 +31,7 @@ public:/*パーティクルの要素構造体*/
 	};
 	struct ParticleGroup {
 		std::list<Particle> particles;
-		//Emitter emitter;
+		Emitter emitter;
 		AccelerationField accelerationField;
 		WorldTransform worldTransform;
 		ObjectColor objectColor;
