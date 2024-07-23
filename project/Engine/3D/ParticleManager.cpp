@@ -31,7 +31,7 @@ void ParticleManager::Update()
 	ImGui::Begin("Particles");
 	for (auto& particle : particleGroups) {
 		if (ImGui::CollapsingHeader(particle.first.c_str())) {
-			if (ImGui::Button(("Generate"+ particle.first).c_str())) {
+			if (ImGui::Button(("Generate" + particle.first).c_str())) {
 				particle.second.particles.splice(particle.second.particles.end(), Emit(particle.second.emitter, randomEngine));
 			}
 		}

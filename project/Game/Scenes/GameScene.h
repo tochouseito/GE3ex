@@ -9,6 +9,8 @@
 #include"ViewProjection.h"
 #include"Particle.h"
 #include"ParticleManager.h"
+//#include"EmitterManager.h"
+
 
 // 2D
 #include"Sprite.h"
@@ -86,6 +88,8 @@ private: // メンバ変数
 	int gsrValue = 0;
 	/*パーティクルマネージャ*/
 	std::unique_ptr<ParticleManager> particleManager_;
+	/*エミッターマネージャ*/
+	//std::unique_ptr<EmitterManager> emitterManager_;
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>

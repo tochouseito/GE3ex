@@ -73,11 +73,18 @@ void GameScene::Initialize() {
 	if (!serial->InitializeSerialPort("COM3")) {  // L"\\\\.\\COM3" はワイド文字列リテラルです
 		Vector3();
 	}
-	/*パーティクルマネージャの生成*/
+	///*パーティクルマネージャの生成*/
 	particleManager_ = std::make_unique<ParticleManager>();
 	particleManager_->Initialize(&viewProjection_);
 	particleManager_->AddParticle("circle", textureHandle_[1]);
 	particleManager_->AddParticle("uvChecker", textureHandle_[0]);
+	/*エミッターマネージャの生成*/
+	/*emitterManager_ = std::make_unique<EmitterManager>();
+	emitterManager_->Initialize(&viewProjection_);
+	emitterManager_->AddEmitter("uvChecker");
+	emitterManager_->AddEmitter("circle");
+	emitterManager_->AddParticle("uvChecker", textureHandle_[0]);
+	emitterManager_->AddParticle("circle", textureHandle_[1]);*/
 }
 
 void GameScene::Update() {
@@ -114,18 +121,20 @@ void GameScene::Update() {
 	particles_->Update();
 	/*パーティクルマネージャの更新*/
 	particleManager_->Update();
+	//emitterManager_->Update();
 	// メインカメラの処理
 	mainCamera_->Update();
 	viewProjection_.UpdateMatrix();
 }
 
 void GameScene::Draw() {
-	plane_->Draw();
-	axis_->Draw();
-	sphere_->Draw();
+	//plane_->Draw();
+	//axis_->Draw();
+	//sphere_->Draw();
 	//primitive_->Draw();
-	particles_->Draw();
+	//particles_->Draw();
 	/*パーティクルマネージャの描画*/
 	particleManager_->Draw();
-	sprite_->Draw();
+	//emitterManager_->Draw();
+	//sprite_->Draw();
 }
