@@ -2,6 +2,7 @@
 // base
 #include "DirectXCommon.h"
 #include"Input.h"
+#include"Audio.h"
 
 // 3D
 #include"Model.h"
@@ -59,6 +60,8 @@ public: // メンバ関数
 
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;
+	Audio* audio_ = nullptr;
+	Audio::SoundData SoundData1;
 	
 	// テクスチャハンドル
 	std::string textureHandle_[3]{};

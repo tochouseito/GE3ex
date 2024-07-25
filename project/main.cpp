@@ -7,6 +7,7 @@
 #include "TextureManager.h"
 #include"SrvManager.h"
 #include"Input.h"
+#include"Audio.h"
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	CoInitializeEx(0, COINIT_MULTITHREADED);
@@ -17,6 +18,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	DirectXCommon* dxCommon = nullptr;
 	// 汎用機能
 	Input* input = nullptr;
+	Audio* audio = nullptr;
 	GameScene* gameScene = nullptr;
 	SrvManager* srvManager = nullptr;
 
@@ -36,6 +38,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// 入力の初期化
 	input = Input::GetInstance();
 	input->Initialize();
+	/*音声の初期化*/
+	audio = Audio::GetInstance();
+	audio->Initialize();
 	// テクスチャマネージャの初期化
 	TextureManager::GetInstance()->Initialize(dxCommon->GetDevice(),dxCommon,srvManager);
 	// ここにモデルの初期化予定
