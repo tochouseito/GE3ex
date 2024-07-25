@@ -34,7 +34,7 @@ void GameScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	audio_ = Audio::GetInstance();
 
-	SoundData1 = audio_->SoundLordWave("./Resources/mokugyo.wav");
+	SoundData1 = audio_->SoundLordWave("./Resources/fanfare.wav");
 	// ファイル名でテクスチャを読み込む
 	textureHandle_[0] = TextureManager::Load("./Resources/uvChecker.png");
 	textureHandle_[1] = TextureManager::Load("./Resources/circle.png");
@@ -98,7 +98,6 @@ void GameScene::Update() {
 	if (ImGui::Button("Start")) {
 		audio_->SoundPlayWave(audio_->GetXAudio2(), SoundData1);
 	}
-	
 	ImGui::End();
 #endif // _DEBUG
 	if (Input::GetInstance()->TriggerKey(DIK_0)) {
