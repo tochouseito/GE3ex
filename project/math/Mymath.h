@@ -36,6 +36,8 @@ Matrix4x4 MakeRotateXMatrix(float radian);
 Matrix4x4 MakeRotateYMatrix(float radian);
 // ６．Z軸回転行列
 Matrix4x4 MakeRotateZMatrix(float radian);
+// XYZ回転
+Matrix4x4 MakeRotateXYZMatrix(Vector3& rotate);
 // 3次元アフィン変換行列
 Matrix4x4 MakeAffineMatrix(const Vector3& scale, const Vector3& rotate, const Vector3& translate);
 // 透視投影行列

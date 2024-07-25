@@ -8,6 +8,10 @@ public:
 	~MainCamera();
 	
 public:
+	// X,Y,Z軸回りのローカル回転角
+	Vector3 rotation_ = { 0.0f, 0.0f, 0.0f };
+	// ローカル座標
+	Vector3 translation_ = { 0.0f, 0.0f, -50.0f };
 	/// <summary>
 	/// 初期化
 	/// </summary>

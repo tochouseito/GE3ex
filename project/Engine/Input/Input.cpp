@@ -34,6 +34,19 @@ void Input::Initialize() {
 	result = keyboard->SetCooperativeLevel(
 		WinApp::GetInstance()->GetHwnd(), DISCL_FOREGROUND | DISCL_NONEXCLUSIVE | DISCL_NOWINKEY);
 	assert(SUCCEEDED(result));
+
+	/*マウスデバイスの生成*/
+	result = directInput->CreateDevice(GUID_SysMouse, &devMouse, NULL);
+	assert(SUCCEEDED(result));
+
+	/*入力データの形式のセット*/
+	result = devMouse->SetDataFormat(&c_dfDIMouse2);/*標準形式*/
+	assert(SUCCEEDED(result));
+
+	/*排他制御レベルのセット*/
+	result = devMouse->SetCooperativeLevel(
+		WinApp::GetInstance()->GetHwnd(), DISCL_FOREGROUND | DISCL_NONEXCLUSIVE | DISCL_NOWINKEY);
+	assert(SUCCEEDED(result));
 }
 /// <summary>
 /// 更新
@@ -42,13 +55,22 @@ void Input::Update() {
 
 	// 前回のキー入力を保存
 	memcpy(preKey, key, sizeof(key));
+	/*マウス*/
+	mousePre = mouse;
 
 	// キーボード情報の取得開始
 	keyboard->Acquire();
+	/*マウス*/
+	devMouse->Acquire();
 
 	// 全キーの入力状態を取得する
 	keyboard->GetDeviceState(sizeof(key), key);
+	devMouse->GetDeviceState(sizeof(mouse), &mouse);
 
+	POINT point;
+	GetCursorPos(&point);
+	ScreenToClient(WinApp::GetInstance()->GetHwnd(), &point);
+	mousePosition_ = Vector2(static_cast<float>(point.x), static_cast<float>(point.y));
 }
 /// <summary>
 /// キーの押下をチェック
@@ -74,4 +96,35 @@ bool Input::TriggerKey(uint8_t keyNumber) const {
 		return true;
 	}
 	return false;
+}
+
+const DIMOUSESTATE2& Input::GetAllMouse() const
+{
+	return mouse;
+}
+
+bool Input::IsPressMouse(int32_t mouseNumber) const
+{
+	return mouse.rgbButtons[mouseNumber] & 0x80;
+}
+
+bool Input::IsTriggerMouse(int32_t buttonNumber) const
+{
+	return (mouse.rgbButtons[buttonNumber] & 0x80) && !(mousePre.rgbButtons[buttonNumber] & 0x80);
+}
+
+Input::MouseMove Input::GetMouseMove()
+{
+	MouseMove move = { mouse.lX, mouse.lY, mouse.lZ };
+	return move;
+}
+
+int32_t Input::GetWheel() const
+{
+	return mouse.lZ;
+}
+
+const Vector2& Input::GetMousePosition() const
+{
+	return mousePosition_;
 }

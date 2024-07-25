@@ -11,6 +11,7 @@
 #include"Particle.h"
 #include"ParticleManager.h"
 //#include"EmitterManager.h"
+#include"DebugCamera.h"
 
 
 // 2D
@@ -93,6 +94,9 @@ private: // メンバ変数
 	std::unique_ptr<ParticleManager> particleManager_;
 	/*エミッターマネージャ*/
 	//std::unique_ptr<EmitterManager> emitterManager_;
+	/*デバッグカメラ*/
+	std::unique_ptr < DebugCamera> debugCamera_;
+	bool useDebugCamera_ = false;
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>

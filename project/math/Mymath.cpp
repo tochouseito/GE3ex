@@ -199,6 +199,14 @@ Matrix4x4 MakeRotateZMatrix(float radian) {
 	result.m[3][3] = 1.0f;
 	return result;
 }
+Matrix4x4 MakeRotateXYZMatrix(Vector3& rotate)
+{
+	Matrix4x4 rotateXMatrix = MakeRotateXMatrix(rotate.x);
+	Matrix4x4 rotateYMatrix = MakeRotateYMatrix(rotate.y);
+	Matrix4x4 rotateZMatrix = MakeRotateZMatrix(rotate.z);
+	Matrix4x4 rotateXYZMatrix = Multiply(rotateXMatrix, Multiply(rotateYMatrix, rotateZMatrix));
+	return rotateXYZMatrix;
+}
 // 3次元アフィン変換行列
 Matrix4x4 MakeAffineMatrix(const Vector3& scale, const Vector3& rotate, const Vector3& translate) {
 	Matrix4x4 result;

@@ -89,6 +89,9 @@ void GameScene::Initialize() {
 	emitterManager_->AddEmitter("circle");
 	emitterManager_->AddParticle("uvChecker", textureHandle_[0]);
 	emitterManager_->AddParticle("circle", textureHandle_[1]);*/
+	/*デバッグカメラの生成*/
+	debugCamera_ = std::make_unique<DebugCamera>();
+	debugCamera_->Initialize(Vector3(0.0f, 0.0f, 30.0f) ,&viewProjection_);
 }
 
 void GameScene::Update() {
@@ -134,15 +137,23 @@ void GameScene::Update() {
 	/*パーティクルマネージャの更新*/
 	particleManager_->Update();
 	//emitterManager_->Update();
-	// メインカメラの処理
-	mainCamera_->Update();
+	if (Input::GetInstance()->TriggerKey(DIK_C)) {
+		useDebugCamera_ = !useDebugCamera_;
+	}
+	if (useDebugCamera_) {
+		debugCamera_->Update();
+	} else
+	{
+		// メインカメラの処理
+		mainCamera_->Update();
+	}
 	viewProjection_.UpdateMatrix();
 }
 
 void GameScene::Draw() {
-	//plane_->Draw();
-	//axis_->Draw();
-	//sphere_->Draw();
+	plane_->Draw();
+	axis_->Draw();
+	sphere_->Draw();
 	//primitive_->Draw();
 	//particles_->Draw();
 	/*パーティクルマネージャの描画*/
