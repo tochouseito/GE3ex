@@ -91,11 +91,12 @@ void GameScene::Initialize() {
 	emitterManager_->AddParticle("circle", textureHandle_[1]);*/
 	/*デバッグカメラの生成*/
 	debugCamera_ = std::make_unique<DebugCamera>();
-	debugCamera_->Initialize(Vector3(0.0f, 0.0f, 30.0f) ,&viewProjection_);
+	debugCamera_->Initialize(Vector3(0.0f, 0.0f, -30.0f) ,&viewProjection_);
 }
 
 void GameScene::Update() {
 #ifdef _DEBUG
+	
 	ImGui::Begin("Sound");
 	/*音声再生*/
 	if (ImGui::Button("Start")) {
@@ -147,6 +148,12 @@ void GameScene::Update() {
 		// メインカメラの処理
 		mainCamera_->Update();
 	}
+#ifdef _DEBUG
+	ImGui::Begin("ViewProjection");
+	ImGui::DragFloat3("translation", &viewProjection_.translation_.x, 0.01f);
+	ImGui::DragFloat3("rotation", &viewProjection_.rotation_.x, 0.01f);
+	ImGui::End();
+#endif // _DEBUG
 	viewProjection_.UpdateMatrix();
 }
 

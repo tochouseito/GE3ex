@@ -405,6 +405,9 @@ float Length(const Vector3& v) {
 }
 // 正規化
 Vector3 Normalize(const Vector3& v) {
+	if (!v.x && !v.y && !v.z) {
+		return Vector3(0.0f, 0.0f, 0.0f);
+	}
 	Vector3 result;
 	result.x = float(v.x / sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)));
 	result.y = float(v.y / sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)));
@@ -438,4 +441,10 @@ bool IsCollision(const Vector3& center, const AABB& aabb) {
 	} else {
 		return false;
 	}
+}
+
+Vector3 TransformNormal(const Vector3& v, const Matrix4x4& m)
+{
+	Vector3 result{ v.x * m.m[0][0] + v.y * m.m[1][0] + v.z * m.m[2][0], v.x * m.m[0][1] + v.y * m.m[1][1] + v.z * m.m[2][1], v.x * m.m[0][2] + v.y * m.m[1][2] + v.z * m.m[2][2] };
+	return result;
 }

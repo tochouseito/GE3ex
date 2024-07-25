@@ -3,6 +3,7 @@
 #include"mathShapes.h"
 #include"Vector3.h"
 #include"Vector2.h"
+#include"Matrix4x4.h"
 class DebugCamera
 {
 public:
@@ -10,6 +11,7 @@ public:
 	Vector3 rotation_ = { 0.0f, 0.0f, 0.0f };
 	// ローカル座標
 	Vector3 translation_ = { 0.0f, 0.0f, -50.0f };
+	Matrix4x4 matRot_;
 	/// <summary>
 	/// 初期化
 	/// </summary>
