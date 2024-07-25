@@ -47,9 +47,10 @@ Audio::SoundData Audio::SoundLordWave(const char* filename)
 	FormatChunk format = {};
 	/*チャンクヘッダーの確認*/
 	file.read((char*)&format, sizeof(ChunkHeader));
-	if (strncmp(format.chunk.id, "fmt", 4) == 0) {
+	if (strncmp(format.chunk.id, "fmt ", 4) != 0) {
 		assert(0);
 	}
+
 	/*チャンク本体の読み込み*/
 	assert(format.chunk.size <= sizeof(format.fmt));
 	file.read((char*)&format.fmt, format.chunk.size);
