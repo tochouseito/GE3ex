@@ -108,6 +108,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\3D\DebugCamera.cpp" />
     <ClCompile Include="Engine\base\Audio.cpp" />
     <ClCompile Include="Engine\3D\EmitterManager.cpp" />
+    <ClCompile Include="Framework.cpp" />
     <ClCompile Include="Game\Objects\axis.cpp" />
     <ClCompile Include="Engine\base\ConvertString.cpp" />
     <ClCompile Include="Engine\base\DirectXCommon.cpp" />
@@ -150,6 +151,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\3D\DebugCamera.h" />
     <ClInclude Include="Engine\base\Audio.h" />
     <ClInclude Include="Engine\3D\EmitterManager.h" />
+    <ClInclude Include="Framework.h" />
     <ClInclude Include="Game\Objects\axis.h" />
     <ClInclude Include="Engine\base\ConvertString.h" />
     <ClInclude Include="Engine\base\DirectXCommon.h" />
