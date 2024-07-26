@@ -39,7 +39,7 @@ void ViewProjection::UpdateMatrix() {
 	Matrix4x4 rotateZMatrix = MakeRotateZMatrix(rotation_.z);
 	Matrix4x4 rotateXYZMatrix = Multiply(rotateXMatrix, Multiply(rotateYMatrix, rotateZMatrix));
 	Matrix4x4 translateMatrix = MakeTranslateMatrix(translation_);
-	Matrix4x4 cameraMatrix = Multiply(rotateXYZMatrix, Multiply(scaleMatrix, translateMatrix));
+	Matrix4x4 cameraMatrix = Multiply(scaleMatrix, Multiply(rotateXYZMatrix, translateMatrix));
 	cameraMatrix_ = cameraMatrix;
 	viewMatrix_ = Inverse(cameraMatrix);
 	/*projectionMatrix_ = MakePerspectiveFovMatrix(0.45f,

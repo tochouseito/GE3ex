@@ -26,5 +26,6 @@ public:
 private:
 	ViewProjection* viewProjection_;
 	Vector2 mouse;
+	bool useMouse=false;
 };
 

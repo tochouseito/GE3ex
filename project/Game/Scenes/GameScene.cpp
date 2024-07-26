@@ -143,10 +143,12 @@ void GameScene::Update() {
 	}
 	if (useDebugCamera_) {
 		debugCamera_->Update();
+		viewProjection_.TransferMatrix();
 	} else
 	{
 		// メインカメラの処理
 		mainCamera_->Update();
+		viewProjection_.UpdateMatrix();
 	}
 #ifdef _DEBUG
 	ImGui::Begin("ViewProjection");
@@ -154,7 +156,7 @@ void GameScene::Update() {
 	ImGui::DragFloat3("rotation", &viewProjection_.rotation_.x, 0.01f);
 	ImGui::End();
 #endif // _DEBUG
-	viewProjection_.UpdateMatrix();
+	
 }
 
 void GameScene::Draw() {
