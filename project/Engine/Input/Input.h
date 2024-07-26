@@ -102,7 +102,7 @@ private:
 
 	Microsoft::WRL::ComPtr<IDirectInput8> directInput = nullptr;
 	Microsoft::WRL::ComPtr<IDirectInputDevice8> keyboard = nullptr;
-	Microsoft::WRL::ComPtr<IDirectInputDevice8> devMouse=nullptr;
+	Microsoft::WRL::ComPtr<IDirectInputDevice8> devMouse = nullptr;
 	//std::array<BYTE, 256> key_;
 	BYTE key[256] = {};
 	BYTE preKey[256] = {};
