@@ -1,6 +1,5 @@
 #pragma warning(push)
 #pragma warning(disable:28251)
-#include "WinApp.h"
 #include"MyGame.h"
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -10,7 +9,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	myGame->Initialize();
 	// メインループ
 	while (true){
-		if (WinApp::GetInstance()->ProcessMessage()) {
+		if (myGame->IsEndRequest()) {
 			break;
 		}
 		/*ゲームループ*/

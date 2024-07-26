@@ -6,7 +6,6 @@ class MainCamera
 public:
 	MainCamera() = default;
 	~MainCamera();
-	
 public:
 	// X,Y,Z軸回りのローカル回転角
 	Vector3 rotation_ = { 0.0f, 0.0f, 0.0f };

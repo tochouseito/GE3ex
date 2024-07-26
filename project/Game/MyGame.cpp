@@ -37,6 +37,9 @@ void MyGame::Initialize()
 
 void MyGame::Operation()
 {
+	if (win->ProcessMessage()) {
+		endRequest = true;
+	}
 	// ImGui受付開始
 	imguiManager->Begin();
 	// 入力関連の毎フレーム処理
@@ -67,4 +70,12 @@ void MyGame::Finalize()
 	CloseWindow(win->GetHwnd());
 	// COMの終了処理
 	CoUninitialize();
+}
+
+bool MyGame::IsEndRequest()
+{
+	if (endRequest) {
+		return true;
+	}
+	return false;
 }

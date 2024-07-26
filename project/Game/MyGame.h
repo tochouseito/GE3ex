@@ -22,6 +22,9 @@ public:
 	/// 終了処理
 	/// </summary>
 	void Finalize();
+
+	bool IsEndRequest();
+
 private:
 	D3DResourceLeakChecker* leakCheck = nullptr;
 	WinApp* win = nullptr;
@@ -32,5 +35,8 @@ private:
 	GameScene* gameScene = nullptr;
 	ImGuiManager* imguiManager = nullptr;
 	SrvManager* srvManager = nullptr;
+
+	/*ループ終了*/
+	bool endRequest = false;
 };
 
