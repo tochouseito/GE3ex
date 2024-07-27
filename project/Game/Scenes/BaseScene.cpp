@@ -2,6 +2,7 @@
 
 void BaseScene::Initialize()
 {
+
 }
 
 void BaseScene::Finalize()

@@ -148,6 +148,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\3D\ParticleManager.cpp" />
     <ClCompile Include="Game\MyGame.cpp" />
     <ClCompile Include="Game\Scenes\TitleScene.cpp" />
+    <ClCompile Include="Game\Scenes\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Scenes\BaseScene.h" />
@@ -199,6 +200,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\3D\ParticleManager.h" />
     <ClInclude Include="Game\MyGame.h" />
     <ClInclude Include="Game\Scenes\TitleScene.h" />
+    <ClInclude Include="Game\Scenes\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\BasicGeometryShader.hlsl">

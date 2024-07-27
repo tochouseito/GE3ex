@@ -6,6 +6,7 @@
 #include"SrvManager.h"
 #include"Input.h"
 #include"Audio.h"
+//#include"SceneManager.h"
 /// <summary>
 /// ゲーム全体
 /// </summary>
@@ -53,6 +54,7 @@ private:
 	Audio* audio = nullptr;
 	ImGuiManager* imguiManager = nullptr;
 	SrvManager* srvManager = nullptr;
+	//SceneManager* sceneManager = nullptr;
 	/*ループ終了*/
 	bool endRequest_ = false;
 };

@@ -25,10 +25,8 @@ void Framework::Initialize()
 	audio->Initialize();
 	// テクスチャマネージャの初期化
 	TextureManager::GetInstance()->Initialize(dxCommon->GetDevice(), dxCommon, srvManager);
-	// ここにモデルの初期化予定
-	///
-	/// 今はゲームシーンで初期化している
-	///
+	
+
 #pragma endregion
 }
 

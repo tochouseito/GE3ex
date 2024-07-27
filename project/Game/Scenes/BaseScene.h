@@ -1,4 +1,5 @@
 #pragma once
+class SceneManager;
 class BaseScene
 {
 public:
@@ -26,5 +27,10 @@ public:
 	/// 描画
 	/// </summary>
 	virtual void Draw();
+
+	virtual void SetSceneManager(SceneManager* sceneManager) { sceneManager_ = sceneManager; }
+private:
+	/*シーンマネージャを借りてくる*/
+	SceneManager* sceneManager_ = nullptr;
 };
 
