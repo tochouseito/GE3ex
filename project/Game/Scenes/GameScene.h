@@ -23,13 +23,16 @@
 #include"SphereModel.h"
 #include"Primitive.h"
 
+/*Scene*/
+#include"BaseScene.h"
+
 /*externals*/
 #include"SerialToArduino.h"
 
 /// <summary>
 /// ゲームシーン
 /// </summary>
-class GameScene {
+class GameScene:public BaseScene {
 
 public: // メンバ関数
 	/// <summary>
@@ -45,17 +48,22 @@ public: // メンバ関数
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize();
+	void Initialize()override;
+
+	/// <summary>
+	/// 終了
+	/// </summary>
+	void Finalize()override;
 
 	/// <summary>
 	/// 毎フレーム処理
 	/// </summary>
-	void Update();
+	void Update()override;
 
 	/// <summary>
 	/// 描画
 	/// </summary>
-	void Draw();
+	void Draw()override;
 
 	
 

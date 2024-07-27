@@ -25,8 +25,6 @@ GameScene::~GameScene() {
 	delete primitive_;
 
 	delete serial;
-	audio_->Finalize();
-	audio_->SoundUnlord(&SoundData1);
 }
 
 void GameScene::Initialize() {
@@ -92,6 +90,12 @@ void GameScene::Initialize() {
 	/*デバッグカメラの生成*/
 	debugCamera_ = std::make_unique<DebugCamera>();
 	debugCamera_->Initialize(Vector3(0.0f, 0.0f, -30.0f) ,&viewProjection_);
+}
+
+void GameScene::Finalize()
+{
+	audio_->Finalize();
+	audio_->SoundUnlord(&SoundData1);
 }
 
 void GameScene::Update() {
