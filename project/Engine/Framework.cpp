@@ -61,7 +61,9 @@ void Framework::Operation()
 
 void Framework::Update()
 {
-	if(win->ProcessMessage())
+	if (win->ProcessMessage()) {
+		endRequest_ = true;
+	}
 	// ImGui受付開始
 	imguiManager->Begin();
 	// 入力関連の毎フレーム処理
