@@ -28,6 +28,11 @@ public:
 	/// </summary>
 	virtual void Draw();
 
+	/// <summary>
+	/// シーンの切り替え依頼
+	/// </summary>
+	virtual void ChangeScene();
+
 	virtual void SetSceneManager(SceneManager* sceneManager) { sceneManager_ = sceneManager; }
 private:
 	/*シーンマネージャを借りてくる*/

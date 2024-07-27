@@ -5,7 +5,9 @@ void MyGame::Initialize()
 	/*基底クラスの初期化*/
 	Framework::Initialize();
 	/*シーンマネージャの生成*/
-	sceneManager = new SceneManager();
+	//sceneManager = new SceneManager();
+	sceneManager = SceneManager::GetInstance();
+	sceneManager->Initialize();
 	/*タイトルシートの初期化*/
 	//titleScene = new TitleScene();
 	//titleScene->Initialize();
@@ -15,7 +17,7 @@ void MyGame::Initialize()
 	//baseScene = new GameScene();
 	//baseScene->Initialize();
 	/*最初のシーン生成*/
-	BaseScene* scene = new GameScene();
+	BaseScene* scene = new TitleScene();
 	/*シーンマネージャに最初のシーンをセット*/
 	sceneManager->SetNextScene(scene);
 }
@@ -28,7 +30,8 @@ void MyGame::Finalize()
 	//delete gameScene;
 	//delete titleScene;
 	//delete baseScene;
-	delete sceneManager;
+	//delete sceneManager;
+	SceneManager::GetInstance()->Finalize();
 	/*基底クラスの終了処理*/
 	Framework::Finalize();
 }

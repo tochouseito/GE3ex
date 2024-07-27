@@ -22,5 +22,15 @@ public:
 	/// 描画
 	/// </summary>
 	void Draw()override;
+
+	/// <summary>
+	/// シーンの切り替え依頼
+	/// </summary>
+	void ChangeScene()override;
+
+	void SetSceneManager(SceneManager* sceneManager) override{ sceneManager_ = sceneManager; }
+
+private:
+	SceneManager* sceneManager_ = nullptr;
 };
 

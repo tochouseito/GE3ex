@@ -3,6 +3,11 @@
 class SceneManager
 {
 public:
+	/// <summary>
+	/// シングルトンインスタンスの取得
+	/// </summary>
+	/// <returns>シングルトンインスタンス</returns>
+	static SceneManager* GetInstance();
 
 	/// <summary>
 	/// デストラクタ
@@ -37,5 +42,6 @@ private:
 	BaseScene* scene_ = nullptr;
 	/*次のシーン*/
 	BaseScene* nextScene_ = nullptr;
+
 };
 

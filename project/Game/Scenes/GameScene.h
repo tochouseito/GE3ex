@@ -25,6 +25,7 @@
 
 /*Scene*/
 #include"BaseScene.h"
+#include"SceneManager.h"
 
 /*externals*/
 #include"SerialToArduino.h"
@@ -65,12 +66,18 @@ public: // メンバ関数
 	/// </summary>
 	void Draw()override;
 
-	
+	/// <summary>
+	/// シーンの切り替え依頼
+	/// </summary>
+	void ChangeScene()override {}
+
+	void SetSceneManager(SceneManager* sceneManager) override { sceneManager_ = sceneManager; }
 
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;
 	Audio* audio_ = nullptr;
 	Audio::SoundData SoundData1;
+	SceneManager* sceneManager_ = nullptr;
 	
 	// テクスチャハンドル
 	std::string textureHandle_[3]{};
