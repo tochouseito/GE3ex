@@ -9,7 +9,6 @@
 
 
 #include"Mymath.h"
-#include"TitleScene.h"
 
 GameScene::GameScene() {}
 
@@ -103,10 +102,8 @@ void GameScene::Update() {
 #ifdef _DEBUG
 	ImGui::Begin("Scene");
 	if (ImGui::Button("ChangeScene")) {
-		/*次のシーンを生成*/
-		BaseScene* scene = new TitleScene();
 		/*シーン切り替え依頼*/
-		SceneManager::GetInstance()->SetNextScene(scene);
+		SceneManager::GetInstance()->ChangeScene("TITLE");
 	}
 	ImGui::End();
 #endif // _DEBUG

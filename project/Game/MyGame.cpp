@@ -17,9 +17,7 @@ void MyGame::Initialize()
 	//baseScene = new GameScene();
 	//baseScene->Initialize();
 	/*最初のシーン生成*/
-	BaseScene* scene = new TitleScene();
-	/*シーンマネージャに最初のシーンをセット*/
-	sceneManager->SetNextScene(scene);
+	sceneManager->ChangeScene("TITLE");
 }
 
 

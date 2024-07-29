@@ -1,7 +1,4 @@
 #pragma once
-#include "GameScene.h"
-#include"TitleScene.h"
-#include"BaseScene.h"
 #include"SceneManager.h"
 #include"Framework.h"
 class MyGame:public Framework
@@ -31,9 +28,6 @@ public:
 	void PostDraw()override;
 
 private:
-	GameScene* gameScene = nullptr;
-	TitleScene* titleScene = nullptr;
-	BaseScene* baseScene = nullptr;
 	SceneManager* sceneManager = nullptr;
 };
 
