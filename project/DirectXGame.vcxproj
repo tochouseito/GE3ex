@@ -63,7 +63,7 @@
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Engine\2d;$(ProjectDir)Engine\3d;$(ProjectDir)Engine\audio;$(ProjectDir)Engine\base;$(ProjectDir)Engine\input;$(ProjectDir)scene;$(ProjectDir)math;$(ProjectDir)imgui;$(ProjectDir)externals\DirectXTex;$(ProjectDir)externals\imgui;$(ProjectDir)Game;$(ProjectDir)Game\Scenes;$(ProjectDir)Game\Objects;$(ProjectDir)externals\assimp\include;$(ProjectDir)Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Engine\2d;$(ProjectDir)Engine\3d;$(ProjectDir)Engine\audio;$(ProjectDir)Engine\base;$(ProjectDir)Engine\input;$(ProjectDir)scene;$(ProjectDir)math;$(ProjectDir)imgui;$(ProjectDir)externals\DirectXTex;$(ProjectDir)externals\imgui;$(ProjectDir)Game;$(ProjectDir)Game\Scenes;$(ProjectDir)Game\Objects;$(ProjectDir)externals\assimp\include;$(ProjectDir)Engine;%(AdditionalIncludeDirectories);$(ProjectDir)Engine</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -88,7 +88,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Engine\2d;$(ProjectDir)Engine\3d;$(ProjectDir)Engine\audio;$(ProjectDir)Engine\base;$(ProjectDir)Engine\input;$(ProjectDir)scene;$(ProjectDir)math;$(ProjectDir)imgui;$(ProjectDir)externals\DirectXTex;$(ProjectDir)externals\imgui;$(ProjectDir)Game;$(ProjectDir)Game\Scenes;$(ProjectDir)Game\Objects;$(ProjectDir)externals\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Engine\2d;$(ProjectDir)Engine\3d;$(ProjectDir)Engine\audio;$(ProjectDir)Engine\base;$(ProjectDir)Engine\input;$(ProjectDir)scene;$(ProjectDir)math;$(ProjectDir)imgui;$(ProjectDir)externals\DirectXTex;$(ProjectDir)externals\imgui;$(ProjectDir)Game;$(ProjectDir)Game\Scenes;$(ProjectDir)Game\Objects;$(ProjectDir)externals\assimp\include;%(AdditionalIncludeDirectories);$(ProjectDir)Engine</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>

@@ -21,7 +21,7 @@ void Audio::Initialize()
 
 Audio::SoundData Audio::SoundLordWave(const char* filename)
 {
-	HRESULT result;
+	//HRESULT result;
 
 	/*ファイルオープン*/
 	/*ファイル入力ストリームのインスタンス*/
