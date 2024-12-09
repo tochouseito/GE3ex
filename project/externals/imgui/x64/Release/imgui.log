@@ -5,4 +5,4 @@
   imgui_impl_win32.cpp
   imgui_tables.cpp
   imgui_widgets.cpp
-  imgui.vcxproj -> C:\Users\sinse\Source\Repos\GE3ex\project\x64\Release\imgui.lib
+  imgui.vcxproj -> C:\Users\sinse\source\repos\GE3ex\project\x64\Release\imgui.lib
